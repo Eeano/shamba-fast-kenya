@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shamba Fast Kenya - Farmer to Buyer. Fresh. Direct. No Waste.</title>
+<style>
+body{font-family:Arial;margin:0;background:#f5f5f5;color:#222}
+.header{background:#1b5e20;color:#fff;padding:28px 18px;text-align:center}
+.header h1{margin:0;font-size:27px}
+.header p{color:#ffcc00;margin:6px 0}
+.header .sub{color:#fff;font-size:15px}
+.section{padding:15px}
+h2{font-size:19px;margin:18px 0 8px}
+.card{background:#fff;margin:12px 0;padding:15px;border-radius:12px}
+.prov-btn{display:block;background:#fff;border:2px solid #1b5e20;padding:16px;margin:8px 0;border-radius:12px;font-size:17px;font-weight:bold;text-align:left;cursor:pointer;width:100%}
+.prov-btn span{float:right}
+.county-box{display:none;background:#fff;border-radius:12px;padding:10px;margin:0 0 15px;border:1px solid #ddd}
+.county-btn{display:inline-block;background:#e8f5e9;padding:10px 14px;margin:5px;border-radius:20px;font-weight:bold;cursor:pointer;border:1px solid #81c784}
+.county-btn.active{background:#1b5e20;color:#fff}
+.fundi-card{background:#fff;margin:12px 15px;padding:15px;border-radius:12px;display:none}
+.price{color:green;font-weight:bold}
+.badge{background:#e8f5e9;color:#1b5e20;padding:4px 8px;border-radius:20px;font-size:12px;font-weight:bold}
+.badge-top{background:#ffcc00;color:#111;padding:4px 8px;border-radius:20px;font-size:12px;font-weight:bold}
+.badge-grey{background:#eeeeee;color:#555;padding:4px 8px;border-radius:20px;font-size:12px}
+.btn{display:block;background:#25D366;color:#fff;text-align:center;padding:14px;border-radius:10px;text-decoration:none;font-weight:bold;margin-top:10px}
+.btn-yellow{display:block;background:#ffcc00;color:#111;text-align:center;padding:16px;border-radius:10px;text-decoration:none;font-weight:bold;margin-top:10px;font-size:17px}
+.btn-dark{display:block;background:#1b5e20;color:#fff;text-align:center;padding:14px;border-radius:10px;text-decoration:none;font-weight:bold;margin-top:10px}
+.btn2{display:block;background:#1b5e20;color:#fff;text-align:center;padding:12px;border-radius:10px;text-decoration:none;margin-top:8px}
+.back{color:#1b5e20;font-weight:bold;cursor:pointer}
+.footer{text-align:center;padding:20px;color:#888;font-size:13px}
+.fundi-top{display:flex;gap:12px;align-items:center}
+.fundi-initial{width:70px;height:70px;min-width:70px;border-radius:50%;background:#1b5e20;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:bold}
+.fundi-info{flex:1}
+.fundi-info p{margin:3px 0;font-size:14px;color:#444}
+.tag{background:#fff3cd;padding:3px 8px;border-radius:20px;font-size:12px}
+input,select,textarea{width:100%;padding:12px;margin:5px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;font-family:Arial}
+label{font-weight:bold;font-size:14px}
+.join-box{background:#fff;margin:15px;padding:16px;border-radius:12px;border:2px solid #1b5e20}
+.quick-box{background:#fff;margin:15px;padding:16px;border-radius:12px;border:2px solid #ffcc00}
+.report-box{background:#fff;margin:15px;padding:16px;border-radius:12px;border:2px solid #1b5e20}
+.notice{background:#fff3cd;padding:12px;border-radius:10px;font-size:14px}
+.small{font-size:13px;color:#666}
+.work-photos{display:flex;gap:8px;margin-top:10px}
+.work-photos img{width:50%;height:110px;object-fit:cover;border-radius:10px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+table td,table th{border:1px solid #eee;padding:8px;text-align:left}
+table th{background:#f5f5f5}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>🍅 SHAMBA FAST KENYA</h1>
+<p>Farmer to Buyer. Fresh. Direct. No Waste.</p>
+<p class="sub">Request fresh produce in your county. Home Base: Siaya County.</p>
+<a href="#buyer" class="btn-yellow">🛒 I NEED FOOD / PRODUCE NOW →</a>
+<a href="#farmer" class="btn" style="background:#fff;color:#111">🌾 I AM A FARMER - I HAVE FOOD TO SELL →</a>
+<a href="#report" class="btn" style="background:#fff;color:#111">📋 Report Sale Done / No Sale →</a>
+<a href="#find" class="btn" style="background:#fff;color:#111">Browse Produce by County →</a>
+<p class="small" style="color:#ccc">Response times depend on farmer availability and harvest.</p>
+</div>
+
+<div class="quick-box" id="buyer">
+<h3 style="margin:0">🛒 I Need Food / Produce Now - BUYER</h3>
+<p class="small">Tell us what you need, we will try to find a farmer for you. You will get a Sale ID - save it to report the sale later.</p>
+<label>What produce do you need? *</label>
+<select id="qProduce"><option>Tomatoes</option><option>Onions</option><option>Potatoes</option><option>Sukuma Wiki / Cabbage</option><option>Maize / Corn</option><option>Beans / Ndengu</option><option>Eggs</option><option>Chicken - Kienyeji / Broiler</option><option>Fish - Omena / Tilapia</option><option>Bananas / Fruits</option><option>Milk</option><option>Other</option></select>
+<label>How much do you need?</label>
+<input id="qQty" placeholder="e.g. 50kg, 10 trays, 20 chickens">
+<label>Your County *</label>
+<select id="qCounty"><option>Siaya</option><option>Kisumu</option><option>Homa Bay</option><option>Migori</option><option>Kisii</option><option>Nyamira</option><option>Nairobi</option><option>Mombasa</option><option>Kwale</option><option>Kilifi</option><option>Tana River</option><option>Lamu</option><option>Taita-Taveta</option><option>Garissa</option><option>Wajir</option><option>Mandera</option><option>Marsabit</option><option>Isiolo</option><option>Meru</option><option>Tharaka-Nithi</option><option>Embu</option><option>Kitui</option><option>Machakos</option><option>Makueni</option><option>Nyandarua</option><option>Nyeri</option><option>Kirinyaga</option><option>Murang'a</option><option>Kiambu</option><option>Turkana</option><option>West Pokot</option><option>Samburu</option><option>Trans Nzoia</option><option>Uasin Gishu</option><option>Elgeyo-Marakwet</option><option>Nandi</option><option>Baringo</option><option>Laikipia</option><option>Nakuru</option><option>Narok</option><option>Kajiado</option><option>Kericho</option><option>Bomet</option><option>Kakamega</option><option>Vihiga</option><option>Bungoma</option><option>Busia</option></select>
+<label>Your Town / Market *</label>
+<input id="qTown" placeholder="e.g. Siaya Town Market">
+<label>When do you need it?</label>
+<input id="qTime" placeholder="e.g. Today, Tomorrow morning">
+<a href="#" onclick="buyerEnquiry();return false;" class="btn">Send Buyer Enquiry on WhatsApp →</a>
+<p class="small" style="text-align:center">This is an enquiry, not a confirmed sale. Farmer will confirm availability and price.</p>
+</div>
+
+<div class="join-box" id="farmer">
+<h3 style="margin:0">🌾 I Am A Farmer - I Have Food To Sell</h3>
+<p class="small">Don't let it rot. Tell us what you have, we will try to find a buyer.</p>
+<div class="notice">
+<b>Fee - Read Before Posting:</b><br>
+- You pay <b>KES 100 - 200 per successful sale</b> through Shamba Fast Kenya.<br>
+- You pay <b>AFTER</b> the sale is confirmed DONE, not before.<br>
+- No fee if buyer cancels, or sale does not happen.<br>
+- No monthly fee. No guarantee of buyers.
+</div><br>
+<label>Your Name *</label>
+<input id="fName" placeholder="e.g. Mary Atieno">
+<label>Your Phone Number *</label>
+<input id="fPhone" placeholder="e.g. 0712345678">
+<label>What produce do you have? *</label>
+<select id="fProduce"><option>Tomatoes</option><option>Onions</option><option>Potatoes</option><option>Sukuma Wiki / Cabbage</option><option>Maize / Corn</option><option>Beans / Ndengu</option><option>Eggs</option><option>Chicken - Kienyeji / Broiler</option><option>Fish - Omena / Tilapia</option><option>Bananas / Fruits</option><option>Milk</option><option>Other</option></select>
+<label>Quantity Available *</label>
+<input id="fQty" placeholder="e.g. 100kg, 20 trays">
+<label>Your Price Per Unit (KES) *</label>
+<input id="fPrice" placeholder="e.g. 40 per kg">
+<label>County *</label>
+<select id="fCounty"><option>Siaya</option><option>Kisumu</option><option>Homa Bay</option><option>Migori</option><option>Kisii</option><option>Nyamira</option><option>Nairobi</option><option>Mombasa</option><option>Kwale</option><option>Kilifi</option><option>Tana River</option><option>Lamu</option><option>Taita-Taveta</option><option>Garissa</option><option>Wajir</option><option>Mandera</option><option>Marsabit</option><option>Isiolo</option><option>Meru</option><option>Tharaka-Nithi</option><option>Embu</option><option>Kitui</option><option>Machakos</option><option>Makueni</option><option>Nyandarua</option><option>Nyeri</option><option>Kirinyaga</option><option>Murang'a</option><option>Kiambu</option><option>Turkana</option><option>West Pokot</option><option>Samburu</option><option>Trans Nzoia</option><option>Uasin Gishu</option><option>Elgeyo-Marakwet</option><option>Nandi</option><option>Baringo</option><option>Laikipia</option><option>Nakuru</option><option>Narok</option><option>Kajiado</option><option>Kericho</option><option>Bomet</option><option>Kakamega</option><option>Vihiga</option><option>Bungoma</option><option>Busia</option></select>
+<label>Your Town / Village *</label>
+<input id="fTown" placeholder="e.g. Ugunja, Siaya">
+<label>When is it ready? / How fresh?</label>
+<input id="fFresh" placeholder="e.g. Harvested today, Ready tomorrow">
+<a href="#" onclick="farmerPost();return false;" style="display:block;background:#25D366;color:#fff;text-align:center;padding:14px;border-radius:10px;text-decoration:none;font-weight:bold;margin-top:10px">Send Farmer Listing to Shamba Fast →</a>
+<p class="small" style="text-align:center">By sending, you agree your name, produce, quantity and price can be shown publicly after approval. Your phone number will NOT be shown publicly.</p>
+<p class="small" style="text-align:center"><b>Privacy:</b> Your details are used only to review your listing and connect you to buyers. We do not sell your data. Do not send ID numbers on this form.</p>
+</div>
+
+<div class="report-box" id="report">
+<h3 style="margin:0">📋 Report Your Sale - Did It Happen?</h3>
+<p class="small">Enter your Sale ID from WhatsApp. Example: SK-124. This helps us reward good farmers/buyers and remove bad ones.</p>
+<label>Your Sale ID *</label>
+<input id="rSaleId" placeholder="e.g. SK-124">
+<label>What happened?</label>
+<select id="rStatus">
+<option value="SALE DONE">✅ Sale Done - Good</option>
+<option value="NO SALE">❌ No Sale - Buyer/Farmer Did Not Show</option>
+<option value="BAD QUALITY">⚠️ Bad Quality - Not happy</option>
+<option value="CANCELLED">🚫 I Cancelled</option>
+</select>
+<label>Your Name (optional)</label>
+<input id="rName" placeholder="e.g. Mary">
+<a href="#" onclick="reportSale();return false;" class="btn-dark">Send Sale Report →</a>
+<p class="small" style="text-align:center">If you report SALE DONE, we will collect KES 100-200 from the seller, not from the buyer.</p>
+</div>
+
+<div class="section" id="find">
+<h2>How Shamba Fast Kenya Works</h2>
+<div class="card">
+<b>For Farmers:</b><br>
+1. Fill Farmer Form above - What you have + Price + Location<br>
+2. You get a Sale ID like SK-124 - save it<br>
+3. We try to find a buyer<br>
+4. Buyer contacts via Shamba Fast Kenya<br>
+5. Agree price + delivery / pickup BEFORE sale<br>
+6. Report SALE DONE / NO SALE with your Sale ID<br><br>
+<b>For Buyers (Mama Mboga, Hotels, Schools, Homes):</b><br>
+1. Fill Buyer Form<br>
+2. You get a Sale ID<br>
+3. We try to find a farmer who has it<br>
+4. Agree price + pickup / delivery<br>
+5. Pay farmer directly. Pay AFTER you see the produce.
+</div>
+
+<h2>Trust & Safety</h2>
+<div class="card">
+- Farmer's phone number is <b>NEVER shown</b> on the website. You buy via Shamba Fast Kenya.<br>
+- We do <b>NOT</b> show "Verified" unless we have checked it.<br>
+- <span class="badge">Phone Checked</span> = We called the number and spoke to the farmer.<br>
+- <span class="badge-top">⭐ Top Farmer</span> = 3+ sales reported DONE, no complaints.<br>
+- <span class="badge-grey">New Listing</span> = Just joined, phone check pending.<br>
+- 2x NO SHOW reports = Farmer / Buyer is removed.<br>
+- Always agree price, quantity, quality and pickup/delivery BEFORE sale.<br>
+- Do not pay in advance unless you agree it yourself. Check produce before paying.
+</div>
+
+<h2>💰 Market Price Guide - What Should It Cost?</h2>
+<div class="card">
+<p class="small">Indicative farm-gate prices only. Final price is agreed between farmer and buyer BEFORE sale. Price changes with season, quantity and location. Ask: "Is this farm price or delivered price?"</p>
+<table>
+<tr><th>Produce</th><th>Typical Farm Price</th></tr>
+<tr><td>🍅 Tomatoes - Per Kg</td><td>From KES 40</td></tr>
+<tr><td>🧅 Onions - Per Kg</td><td>From KES 60</td></tr>
+<tr><td>🥔 Potatoes - Per Kg</td><td>From KES 50</td></tr>
+<tr><td>🥬 Sukuma / Cabbage - Per Bunch / Head</td><td>From KES 30</td></tr>
+<tr><td>🌽 Maize - Per Kg / Gorogoro</td><td>From KES 70</td></tr>
+<tr><td>🥚 Eggs - Per Tray (30)</td><td>From KES 350</td></tr>
+<tr><td>🐔 Kienyeji Chicken - Each</td><td>From KES 600</td></tr>
+<tr><td>🐟 Omena - Per Kg</td><td>From KES 120</td></tr>
+<tr><td>🍌 Bananas - Per Bunch</td><td>From KES 200</td></tr>
+<tr><td>🥛 Milk - Per Litre</td><td>From KES 60</td></tr>
+</table>
+<p class="small">Transport / delivery is extra unless farmer says included. Ask clearly before you agree.</p>
+</div>
+
+<h2>1. Choose Your Province 👇</h2>
+<button class="prov-btn" onclick="showProvince('coast')">🌊 Coast Province <span>›</span></button>
+<div class="county-box" id="coast">
+<button class="county-btn" onclick="showCounty('Mombasa',this)">Mombasa</button>
+<button class="county-btn" onclick="showCounty('Kwale',this)">Kwale</button>
+<button class="county-btn" onclick="showCounty('Kilifi',this)">Kilifi</button>
+<button class="county-btn" onclick="showCounty('Tana River',this)">Tana River</button>
+<button class="county-btn" onclick="showCounty('Lamu',this)">Lamu</button>
+<button class="county-btn" onclick="showCounty('Taita-Taveta',this)">Taita-Taveta</button>
+</div>
+<button class="prov-btn" onclick="showProvince('northeastern')">🏜️ North Eastern Province <span>›</span></button>
+<div class="county-box" id="northeastern">
+<button class="county-btn" onclick="showCounty('Garissa',this)">Garissa</button>
+<button class="county-btn" onclick="showCounty('Wajir',this)">Wajir</button>
+<button class="county-btn" onclick="showCounty('Mandera',this)">Mandera</button>
+</div>
+<button class="prov-btn" onclick="showProvince('eastern')">⛰️ Eastern Province <span>›</span></button>
+<div class="county-box" id="eastern">
+<button class="county-btn" onclick="showCounty('Marsabit',this)">Marsabit</button>
+<button class="county-btn" onclick="showCounty('Isiolo',this)">Isiolo</button>
+<button class="county-btn" onclick="showCounty('Meru',this)">Meru</button>
+<button class="county-btn" onclick="showCounty('Tharaka-Nithi',this)">Tharaka-Nithi</button>
+<button class="county-btn" onclick="showCounty('Embu',this)">Embu</button>
+<button class="county-btn" onclick="showCounty('Kitui',this)">Kitui</button>
+<button class="county-btn" onclick="showCounty('Machakos',this)">Machakos</button>
+<button class="county-btn" onclick="showCounty('Makueni',this)">Makueni</button>
+</div>
+<button class="prov-btn" onclick="showProvince('central')">🌳 Central Province <span>›</span></button>
+<div class="county-box" id="central">
+<button class="county-btn" onclick="showCounty('Nyandarua',this)">Nyandarua</button>
+<button class="county-btn" onclick="showCounty('Nyeri',this)">Nyeri</button>
+<button class="county-btn" onclick="showCounty('Kirinyaga',this)">Kirinyaga</button>
+<button class="county-btn" onclick="showCounty('Murang\'a',this)">Murang'a</button>
+<button class="county-btn" onclick="showCounty('Kiambu',this)">Kiambu</button>
+</div>
+<button class="prov-btn" onclick="showProvince('rift')">🏔️ Rift Valley Province <span>›</span></button>
+<div class="county-box" id="rift">
+<button class="county-btn" onclick="showCounty('Turkana',this)">Turkana</button>
+<button class="county-btn" onclick="showCounty('West Pokot',this)">West Pokot</button>
+<button class="county-btn" onclick="showCounty('Samburu',this)">Samburu</button>
+<button class="county-btn" onclick="showCounty('Trans Nzoia',this)">Trans Nzoia</button>
+<button class="county-btn" onclick="showCounty('Uasin Gishu',this)">Uasin Gishu</button>
+<button class="county-btn" onclick="showCounty('Elgeyo-Marakwet',this)">Elgeyo-Marakwet</button>
+<button class="county-btn" onclick="showCounty('Nandi',this)">Nandi</button>
+<button class="county-btn" onclick="showCounty('Baringo',this)">Baringo</button>
+<button class="county-btn" onclick="showCounty('Laikipia',this)">Laikipia</button>
+<button class="county-btn" onclick="showCounty('Nakuru',this)">Nakuru</button>
+<button class="county-btn" onclick="showCounty('Narok',this)">Narok</button>
+<button class="county-btn" onclick="showCounty('Kajiado',this)">Kajiado</button>
+<button class="county-btn" onclick="showCounty('Kericho',this)">Kericho</button>
+<button class="county-btn" onclick="showCounty('Bomet',this)">Bomet</button>
+</div>
+<button class="prov-btn" onclick="showProvince('western')">🌾 Western Province <span>›</span></button>
+<div class="county-box" id="western">
+<button class="county-btn" onclick="showCounty('Kakamega',this)">Kakamega</button>
+<button class="county-btn" onclick="showCounty('Vihiga',this)">Vihiga</button>
+<button class="county-btn" onclick="showCounty('Bungoma',this)">Bungoma</button>
+<button class="county-btn" onclick="showCounty('Busia',this)">Busia</button>
+</div>
+<button class="prov-btn" onclick="showProvince('nyanza')">🎣 Nyanza Province <span>›</span></button>
+<div class="county-box" id="nyanza">
+<button class="county-btn" onclick="showCounty('Siaya',this)">Siaya</button>
+<button class="county-btn" onclick="showCounty('Kisumu',this)">Kisumu</button>
+<button class="county-btn" onclick="showCounty('Homa Bay',this)">Homa Bay</button>
+<button class="county-btn" onclick="showCounty('Migori',this)">Migori</button>
+<button class="county-btn" onclick="showCounty('Kisii',this)">Kisii</button>
+<button class="county-btn" onclick="showCounty('Nyamira',this)">Nyamira</button>
+</div>
+<button class="prov-btn" onclick="showProvince('nairobi')">🏙️ Nairobi Province <span>›</span></button>
+<div class="county-box" id="nairobi">
+<button class="county-btn" onclick="showCounty('Nairobi',this)">Nairobi</button>
+</div>
+<p class="small">We list all 47 counties so you can request produce anywhere, but we only show REAL farmers who have been approved. Coverage is growing county by county.</p>
+</div>
+
+<div id="resultSection" style="display:none">
+<p style="padding:0 15px"><span class="back" onclick="goBack()">← Back to Provinces</span></p>
+<h2 style="padding:0 15px" id="resultTitle">Produce in Siaya</h2>
+<div id="list"></div>
+<div style="padding:0 15px">
+<div class="card" style="background:#fff3cd">
+<h3>Don't see what you need? We will try to find a farmer for you</h3>
+<p id="requestText">Tell us what you need in this county.</p>
+<label>What produce do you need?</label>
+<input id="custNeed" placeholder="e.g. 50kg tomatoes">
+<label>Your Town / Market</label>
+<input id="custTown" placeholder="e.g. Siaya Town Market">
+<label>When do you need it?</label>
+<input id="custTime" placeholder="e.g. Tomorrow morning">
+<a class="btn2" href="#" onclick="requestProduce();return false;">Request Produce in This County →</a>
+<p class="small">This sends an enquiry, not a confirmed sale. You will get a Sale ID.</p>
+</div>
+</div>
+</div>
+
+<div id="fundiCards" style="display:none">
+<!-- *** PASTE NEW FARMERS HERE *** -->
+<!-- EXAMPLE - DELETE THIS EXAMPLE WHEN YOU HAVE REAL FARMER:
+<div class="fundi-card" data-county="Siaya">
+<div class="fundi-top">
+<div class="fundi-initial">M</div>
+<div class="fundi-info">
+<b>Mary Atieno - Tomatoes Farmer</b><br>
+<span class="badge">Phone Checked</span>
+<p>📍 Ugunja, Siaya County</p>
+<p>🍅 100kg Tomatoes - KES 40 / kg - Harvested Today</p>
+<p>⭐ 0 Sales Done</p>
+</div>
+</div>
+<a class="btn" href="https://wa.me/254768643301?text=BUYER%20ENQUIRY%20-%20Mary%20Tomatoes%20Siaya">Request This Produce →</a>
+<p class="small" style="text-align:center">Agree price + pickup before sale. Pay farmer after you check produce.</p>
+</div>
+-->
+</div>
+
+<div class="section">
+<h2>Help & Contact</h2>
+<div class="card">
+WhatsApp: 0768643301<br>
+Home Base: Siaya County, Kenya<br>
+We reply as soon as we can.<br>
+If a farmer / buyer does not respond, message us again and we will try to find another.
+</div>
+</div>
+
+<div class="footer">Shamba Fast Kenya - All 47 Counties<br>Farmer to Buyer. Fresh. Direct. No Waste.<br>WhatsApp: 0768643301</div>
+
+<script>
+var SHEET_URL = "";
+function logToSheet(data){
+  if(!SHEET_URL) return;
+  try{ fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}); }catch(e){}
+}
+function makeSaleId(){ return 'SK-' + Math.floor(100 + Math.random()*900); }
+var currentCounty = 'Siaya';
+function showProvince(id){
+  var boxes=document.querySelectorAll('.county-box');
+  boxes.forEach(function(b){ if(b.id!==id){b.style.display='none'} });
+  var box=document.getElementById(id);
+  box.style.display = box.style.display==='block' ? 'none' : 'block';
+}
+function showCounty(county, btn){
+  currentCounty = county;
+  document.querySelectorAll('.county-btn').forEach(function(b){b.classList.remove('active')});
+  if(btn) btn.classList.add('active');
+  document.getElementById('find').style.display='none';
+  document.getElementById('resultSection').style.display='block';
+  document.getElementById('resultTitle').innerText='Produce in '+county;
+  document.getElementById('requestText').innerText='Tell us what you need in '+county+'. We will try to find a farmer.';
+  var list=document.getElementById('list');
+  list.innerHTML='';
+  var cards=document.querySelectorAll('#fundiCards .fundi-card');
+  var found=false;
+  cards.forEach(function(c){
+    if(c.getAttribute('data-county')===county){
+      var clone=c.cloneNode(true);
+      clone.style.display='block';
+      list.appendChild(clone);
+      found=true;
+    }
+  });
+  if(!found){
+    var div=document.createElement('div');
+    div.style.cssText='background:#fff;margin:12px 15px;padding:15px;border-radius:12px';
+    div.innerHTML='<h3>No produce listed yet in '+county+'</h3><p>Coverage is growing. Use Request Produce below and we will try to find a farmer for you.</p>';
+    list.appendChild(div);
+  }
+}
+function goBack(){
+  document.getElementById('resultSection').style.display='none';
+  document.getElementById('find').style.display='block';
+}
+function buyerEnquiry(){
+  var saleId = makeSaleId();
+  var produce=document.getElementById('qProduce').value;
+  var qty=document.getElementById('qQty').value || 'Not specified';
+  var county=document.getElementById('qCounty').value;
+  var town=document.getElementById('qTown').value;
+  var time=document.getElementById('qTime').value || 'Flexible';
+  if(!town){ alert('Please fill your Town / Market'); return; }
+  logToSheet({type:'BUYER_ENQUIRY', saleId:saleId, produce:produce, qty:qty, county:county, town:town, time:time, status:'NEW', date:new Date().toISOString()});
+  alert('Your Sale ID is ' + saleId + '. Save it! We will WhatsApp you now. You will use it to report SALE DONE / NO SALE.');
+  var msg="BUYER ENQUIRY - I NEED PRODUCE%0A%0A"+"Sale ID: "+encodeURIComponent(saleId)+"%0A"+"Need: "+encodeURIComponent(produce+" - "+qty)+"%0A"+"County: "+encodeURIComponent(county)+"%0A"+"Town: "+encodeURIComponent(town)+"%0A"+"When: "+encodeURIComponent(time)+"%0A%0A"+"Please confirm if a farmer is available.";
+  window.open("https://wa.me/254768643301?text="+msg,"_blank");
+}
+function requestProduce(){
+  var saleId = makeSaleId();
+  var need=document.getElementById('custNeed').value || 'General produce';
+  var town=document.getElementById('custTown').value || 'Not specified';
+  var time=document.getElementById('custTime').value || 'Flexible';
+  logToSheet({type:'BUYER_ENQUIRY', saleId:saleId, need:need, county:currentCounty, town:town, time:time, status:'NEW', date:new Date().toISOString()});
+  alert('Your Sale ID is ' + saleId + '. Save it to report SALE DONE / NO SALE later.');
+  var msg="BUYER ENQUIRY%0A%0A"+"Sale ID: "+encodeURIComponent(saleId)+"%0A"+"County: "+encodeURIComponent(currentCounty)+"%0A"+"Need: "+encodeURIComponent(need)+"%0A"+"Town: "+encodeURIComponent(town)+"%0A"+"When: "+encodeURIComponent(time)+"%0A%0A"+"Please confirm if a farmer is available.";
+  window.open("https://wa.me/254768643301?text="+msg,"_blank");
+}
+function farmerPost(){
+  var saleId = makeSaleId();
+  var name=document.getElementById('fName').value;
+  var phone=document.getElementById('fPhone').value;
+  var produce=document.getElementById('fProduce').value;
+  var qty=document.getElementById('fQty').value;
+  var price=document.getElementById('fPrice').value;
+  var county=document.getElementById('fCounty').value;
+  var town=document.getElementById('fTown').value;
+  var fresh=document.getElementById('fFresh').value;
+  if(!name || !phone || !town || !qty){ alert('Please fill Name, Phone, Quantity and Town'); return; }
+  logToSheet({type:'FARMER_LISTING', saleId:saleId, name:name, phone:phone, produce:produce, qty:qty, price:price, county:county, town:town, fresh:fresh, status:'NEW', date:new Date().toISOString()});
+  alert('Your Sale ID is ' + saleId + '. Save it! We will WhatsApp you now.');
+  var msg = "NEW FARMER LISTING%0A%0A" + "Sale ID: " + encodeURIComponent(saleId) + "%0A" + "Name: " + encodeURIComponent(name) + "%0A" + "Phone: " + encodeURIComponent(phone) + "%0A" + "Produce: " + encodeURIComponent(produce) + "%0A" + "Quantity: " + encodeURIComponent(qty) + "%0A" + "Price: KES " + encodeURIComponent(price) + "%0A" + "County: " + encodeURIComponent(county) + "%0A" + "Town: " + encodeURIComponent(town) + "%0A" + "Fresh: " + encodeURIComponent(fresh) + "%0A%0A" + "I understand KES 100-200 fee is per successful sale, paid after sale.";
+  window.open("https://wa.me/254768643301?text=" + msg, "_blank");
+}
+function reportSale(){
+  var saleId = document.getElementById('rSaleId').value.trim().toUpperCase();
+  var status = document.getElementById('rStatus').value;
+  var name = document.getElementById('rName').value || 'Customer';
+  if(!saleId){ alert('Please enter your Sale ID, e.g. SK-124'); return; }
+  logToSheet({type:'SALE_UPDATE', saleId:saleId, status:status, date:new Date().toISOString()});
+  var msg = "SALE REPORT%0A%0A" + "Sale ID: " + encodeURIComponent(saleId) + "%0A" + "Name: " + encodeURIComponent(name) + "%0A" + "Status: " + encodeURIComponent(status) + "%0A%0A" + "Please update Sheet and follow up.";
+  window.open("https://wa.me/254768643301?text=" + msg, "_blank");
+  alert('Thank you! Your report for ' + saleId + ' has been sent. We will follow up.');
+}
+</script>
+</body>
+  </html>
